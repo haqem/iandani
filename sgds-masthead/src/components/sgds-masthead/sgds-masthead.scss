@@ -1,0 +1,222 @@
+/**
+    * @prop --sgds-masthead-font-family: Primary font family. Default to system fonts.
+    * @prop --sgds-masthead-link-color: Link color. Default to #4372d6.
+    * @prop --sgds-masthead-link-hover-color: Link hover color. Default to #3a79ff.
+    * @prop --sgds-masthead-tablet-padding-x: Left and right padding for tablet view 1024px. Default to 1.25rem.
+    * @prop --sgds-masthead-tablet-font-size: Font size for tablet view 1024px. Default to 0.75rem.
+
+*/
+
+@charset "utf-8";
+$breakpoint-tablet: 1024px;
+// reference bootstrap's breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/elements/container.sass";
+@import "~bulma/sass/grid/_all.sass";
+
+.sgds-masthead {
+  padding: 0;
+  background-color: var(--sgds-masthead-background-color);
+  color: var(--sgds-masthead-text-color);
+  p{
+    margin-bottom: none;
+  }
+  font-family: var(--sgds-masthead-font-family);
+  color: var(--sgds-masthead-text-color);
+  font-size: 0.875rem;
+  @include until($breakpoint-tablet) {
+    font-size: var(--sgds-masthead-tablet-font-size);
+  }
+  @include until($breakpoint-sm) {
+    font-size: var(--sgds-masthead-mobile-font-size);
+  }
+}
+.sg-crest{
+  width: 20px;
+  height: 28px;
+  path{
+    fill: var(--sgds-masthead-crest-color);
+  }
+  @include until($breakpoint-tablet) {
+    font-size: var(--sgds-masthead-tablet-font-size);
+  }
+}
+
+.container{
+  &.is-fluid{
+    @include until($breakpoint-tablet) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+a.trusted-websites-link{
+  &:hover{
+    color: var(--sgds-masthead-link-hover-color);
+    .trusted-websites-icon{
+      fill: var(--sgds-masthead-link-hover-color);
+    }
+  }
+}
+
+.columns{
+  margin-top: 0;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+.column{
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  @include until($breakpoint-tablet) {
+    padding-left: var(--sgds-masthead-tablet-padding-x);
+    padding-right: var(--sgds-masthead-tablet-padding-x);
+  }
+}
+
+.masthead-layout{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.sgds-masthead-button{
+  display: flex;
+  align-items: center;
+  color: var(--sgds-masthead-identify-color);
+  cursor: pointer;
+
+  &:hover{
+    color: var(--sgds-masthead-identify-hover-color);
+  }
+  
+  .is-text{
+    text-decoration: underline;
+  }
+}
+
+.link-color,a{
+  color: var(--sgds-masthead-link-color);
+
+  &:hover{
+    color: var(--sgds-masthead-link-hover-color);
+  }
+}
+.sgds-masthead-content{
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+  @include until($breakpoint-tablet) {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  .content-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10rem;
+    @include until($breakpoint-tablet) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  .column-wrapper{
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+    
+    .content{
+      .title{
+        font-weight: 600; 
+        margin-bottom: 0.5rem;
+        color: var(-sgds-masthead-text-color);
+      }
+      article{
+        line-height: 1.5rem;
+        color: var(-sgds-masthead-text-color);
+      }
+    }
+
+    @include until($breakpoint-tablet) {
+      font-size: var(--sgds-masthead-tablet-font-size);
+      gap: 0.5rem;
+      .content{
+        .title{
+          margin-bottom: 0.25rem;
+        }
+        article{
+          line-height: 1.2rem;
+        }
+      }
+    }
+  }
+  .icon{
+    @include until($breakpoint-tablet) {
+    margin-top: 0.15rem;
+    }
+  }
+  .banner-icon{
+    width: 18px;
+    path{
+      fill: var(--sgds-masthead-text-color);
+    }
+    
+    &-inline{
+      width: 1rem;
+      path{
+        fill: var(--sgds-masthead-text-color);
+      }
+      
+    }
+    @include until($breakpoint-tablet) {
+      width: 12px;
+      &-inline{
+        width: 0.6rem;
+        height: 10px;
+        margin-top: 0.15rem;
+      }
+    }
+  }
+
+  .trusted-websites{
+    &-link{
+      display: inline-flex;
+      align-items: center;
+      
+    }
+    &-icon{
+      fill: var(--sgds-masthead-link-color);
+      margin-left: 2px;
+      @include until($breakpoint-tablet) {
+        width: 12px;
+      }
+    }
+  }
+  
+}
+.sgds-masthead-identify-icon{
+  width: 12px;
+  height: 21px;
+  display: block;
+  transform: rotate(0deg);
+  -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+  &.open{
+    transform: rotate(180deg);
+  }
+  transition: all 0.3s ease-in-out;
+}
+
+.hide{
+  display: none;
+}
+

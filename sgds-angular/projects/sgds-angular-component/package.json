@@ -1,0 +1,12 @@
+{
+  "name": "@govtechsg/sgds-angular-component",
+  "version": "0.0.5",
+  "peerDependencies": {
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0"
+  },
+  "dependencies": {
+    "@govtechsg/sgds-masthead": "0.0.18",
+    "tslib": "^2.3.0"
+  }
+}
